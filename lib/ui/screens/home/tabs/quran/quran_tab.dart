@@ -1,0 +1,163 @@
+import 'package:flutter/material.dart';
+import 'package:islamii/ui/provider/theme_provider.dart';
+import 'package:islamii/ui/screens/chapterdetails/chapterdetails.dart';
+import 'package:islamii/ui/screens/home/tabs/quran/chapter_title.dart';
+import 'package:islamii/ui/utils/mythemedata.dart';
+import 'package:provider/provider.dart';
+
+class QuranTab extends StatelessWidget {
+
+  QuranTab({super.key,});
+  var chapters = [
+    "الفاتحه",
+    "البقرة",
+    "آل عمران",
+    "النساء",
+    "المائدة",
+    "الأنعام",
+    "الأعراف",
+    "الأنفال",
+    "التوبة",
+    "يونس",
+    "هود",
+    "يوسف",
+    "الرعد",
+    "إبراهيم",
+    "الحجر",
+    "النحل",
+    "الإسراء",
+    "الكهف",
+    "مريم",
+    "طه",
+    "الأنبياء",
+    "الحج",
+    "المؤمنون",
+    "النّور",
+    "الفرقان",
+    "الشعراء",
+    "النّمل",
+    "القصص",
+    "العنكبوت",
+    "الرّوم",
+    "لقمان",
+    "السجدة",
+    "الأحزاب",
+    "سبأ",
+    "فاطر",
+    "يس",
+    "الصافات",
+    "ص",
+    "الزمر",
+    "غافر",
+    "فصّلت",
+    "الشورى",
+    "الزخرف",
+    "الدّخان",
+    "الجاثية",
+    "الأحقاف",
+    "محمد",
+    "الفتح",
+    "الحجرات",
+    "ق",
+    "الذاريات",
+    "الطور",
+    "النجم",
+    "القمر",
+    "الرحمن",
+    "الواقعة",
+    "الحديد",
+    "المجادلة",
+    "الحشر",
+    "الممتحنة",
+    "الصف",
+    "الجمعة",
+    "المنافقون",
+    "التغابن",
+    "الطلاق",
+    "التحريم",
+    "الملك",
+    "القلم",
+    "الحاقة",
+    "المعارج",
+    "نوح",
+    "الجن",
+    "المزّمّل",
+    "المدّثر",
+    "القيامة",
+    "الإنسان",
+    "المرسلات",
+    "النبأ",
+    "النازعات",
+    "عبس",
+    "التكوير",
+    "الإنفطار",
+    "المطفّفين",
+    "الإنشقاق",
+    "البروج",
+    "الطارق",
+    "الأعلى",
+    "الغاشية",
+    "الفجر",
+    "البلد",
+    "الشمس",
+    "الليل",
+    "الضحى",
+    "الشرح",
+    "التين",
+    "العلق",
+    "القدر",
+    "البينة",
+    "الزلزلة",
+    "العاديات",
+    "القارعة",
+    "التكاثر",
+    "العصر",
+    "الهمزة",
+    "الفيل",
+    "قريش",
+    "الماعون",
+    "الكوثر",
+    "الكافرون",
+    "النصر",
+    "المسد",
+    "الإخلاص",
+    "الفلق",
+    "الناس"
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeProvider themeProvider= Provider.of<ThemeProvider>(context);
+    bool isDark=themeProvider.isDarkEnables();
+    return Column(
+      children: [
+        Image.asset(
+          "assets/photos/quran_logo.png",
+        ),
+        Divider(
+          color: MyThemeData.lightPrimary,
+          thickness: 2,
+        ),
+        Text(
+          "Chapter Name",
+          style:Theme.of(context).textTheme.titleSmall,
+        ),
+        Divider(
+          color: MyThemeData.lightPrimary,
+          thickness: 2,
+        ),
+        Expanded(
+          child: ListView.separated(
+              itemBuilder: (context, index) => ChapterTitle(chapters[index],index),
+              separatorBuilder: (context, index) => Container(
+                    height: 2,
+                    width: double.infinity,
+                    color: MyThemeData.lightPrimary,
+                    margin: EdgeInsets.symmetric(horizontal: 63),
+                  ),
+              itemCount: chapters.length),
+        )
+      ],
+    );
+  }
+}
